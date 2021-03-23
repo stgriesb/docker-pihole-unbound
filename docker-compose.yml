@@ -11,19 +11,18 @@ services:
       - '67:67/udp'
       - '80:80/tcp'
       - '443:443/tcp'
-     # - '22/tcp' # Uncomment to enable SSH
-    volumes:
+   volumes:
       - '/mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
       - '/mount/pihole/etc-pihole:/etc/pihole'
-#      - '/mount/unbound:/etc/unbound'
+      - '/mount/unbound:/etc/unbound'
     environment:
       TZ: 'Europe/Berlin'
       WEBPASSWORD: 'WEBPASSWORD'
-      ServerIP: 'xxx.xxx.xxx.xxx'
+      ServerIP: '192.168.178.60'
       REV_SERVER: 'true'
       REV_SERVER_DOMAIN: 'fritz.box'
-      REV_SERVER_TARGET: 'xxx.xxx.xxx.xxx'
-      REV_SERVER_CIDR: 'xxx.xxx.xxx.xxx/24'
+      REV_SERVER_TARGET: '192.168.178.1'
+      REV_SERVER_CIDR: '192.168.178.0/24'
       DNS1: 127.0.0.1#5335
       DNS2: 127.0.0.1#5335
       WEB_PORT: '8081'
