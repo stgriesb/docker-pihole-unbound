@@ -2,7 +2,7 @@ version: '3'
 services:
   pihole:
     image: pihole-unbound
-    container_name: pihole
+    container_name: pihole-unbound
     network_mode: host
     restart: always
     ports:
