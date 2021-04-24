@@ -1,7 +1,7 @@
 version: '3'
 services:
   pihole-unbound:
-    image: stgriesb/pihole-unbound
+    image: pihole-unbound
     container_name: pihole-unbound
     network_mode: host
     dns:
@@ -15,9 +15,9 @@ services:
       - '80:80/tcp'
       - '443:443/tcp'
     volumes:
-      - '/volume1/docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
-      - '/volume1/docker/pihole/etc-pihole:/etc/pihole'
-      - '/volume1/docker/pihole/etc-unbound:/etc/unbound'
+      - '${VOLUME}/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - '${VOLUME}/etc-pihole:/etc/pihole'
+      - '${VOLUME}/etc-unbound:/etc/unbound'
     environment:
       TZ: ${TZ}
       WEBPASSWORD: ${WEBPASSWORD}
@@ -29,6 +29,6 @@ services:
       REV_SERVER_DOMAIN: ${REV_SERVER_DOMAIN}
       REV_SERVER_TARGET: ${REV_SERVER_TARGET}
       REV_SERVER_CIDR: ${REV_SERVER_CIDR}
-      DNS1: ${DNS1}
-      DNS2: ${DNS2}
+      DNS1: 127.0.0.1#5335 # Hardcoded to unbound-server
+      DNS2: 127.0.0.1#5335 # Hardcoded to unbound-server
       WEB_PORT: ${WEB_PORT}
